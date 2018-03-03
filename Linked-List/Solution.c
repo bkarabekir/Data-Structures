@@ -13,8 +13,11 @@ struct Node {
 
 ///*prototypes*//
 void skipJremoveK(node *head, int p, int q);
+
 void addData(node **head2, int newData);
+
 void printList(node *head);
+
 ///**///
 node *head = NULL;
 
@@ -61,20 +64,29 @@ int main() {
     srand(time(NULL));
     printf("how many numbers you want to skip: ");
     scanf("%d", &j);
+    while ((j > SIZE_OF_ARRAY) || (j <= 0)) {
+        perror("Error");
+        while (((j = getchar()) != '\n'))
+            continue;
+        printf("Please enter a value less than Size_of_Array:  ");
+        scanf("%d", &j);
+    }
     printf("How many numbers you want to delete: ");
     scanf("%d", &k);
+    while ((k > SIZE_OF_ARRAY) || (k <= 0)) {
+        perror("Error");
+        while ((k = getchar()) != '\n')
+            continue;
+        printf("Please enter a value less than Size_of_Array:  ");
+        scanf("%d", &k);
+    }
     for (i = 0; i < SIZE_OF_ARRAY; ++i) {
         addData(&head, rand() % 100);
     }
-
     printf("j = %d, k = %d \nGiven Linked list: \n", j, k);
     printList(head);
-
     skipJremoveK(head, j, k);
-
     printf("\nLinked list after deletion: \n");
     printList(head);
-
-
     return 0;
 }
