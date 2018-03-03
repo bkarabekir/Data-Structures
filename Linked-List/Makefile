@@ -1,4 +1,4 @@
 mm:
-		gcc main.c -o run
+		gcc Solution.c -o run
 run:
 		./run
